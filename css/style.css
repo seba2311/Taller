@@ -9,3 +9,11 @@
     display: flex;
     justify-content: center;
 }
+
+label{
+    color: white;
+}
+
+body{
+    background: #333;
+}
