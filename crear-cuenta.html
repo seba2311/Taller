@@ -12,7 +12,6 @@
 </head>
 
 <body>
-    <!--menu-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -37,8 +36,9 @@
                         <a class="nav-link" href="#">Quienes somos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="crear-cuenta.html">Crear Cuenta</a>
+                        <a class="nav-link" href="formulario-contacto.html">Contactenos</a>
                     </li>
+
 
 
                 </ul>
@@ -54,7 +54,7 @@
     <div class="divbody">
         <div class="divformulario">
             <form>
-                <h2>Formulario de contacto</h2>
+                <h2>Crear Cuenta</h2>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Nombre</label>
                     <input type="text" class="form-control" id="txtNombre" placeholder="Ingrese Apellido" required minlength="3">
@@ -68,15 +68,12 @@
                     <input type="email" class="form-control" id="txtCorreo" aria-describedby="emailHelp" placeholder="Ingrese correo">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Telefono</label>
-                    <input type="text" class="form-control" id="txtTelefono" placeholder="Ingrese telefono" required minlength="8">
+                    <label for="exampleInputEmail1" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="txtPassword" placeholder="Ingrese contraseña" required minlength="8">
                 </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Describa su problema</label>
-                    <textarea class="form-control" id="txtProblema" rows="3" required minlength="10"></textarea>
-                  </div>
+               
 
-                <button type="submit" class="btn btn-primary" onclick="validarContacto()">Enviar</button>
+                <button type="submit" class="btn btn-primary" onclick="validarCuenta()">Enviar</button>
             </form>
 
         </div>
