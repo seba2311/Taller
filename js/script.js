@@ -86,3 +86,7 @@ function validarCuenta(){
         }
     }
 }
+
+function iniciaresion(){
+    alert('sesion iniciada')
+}
