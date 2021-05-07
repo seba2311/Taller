@@ -62,20 +62,20 @@
 
         <section id="formulario">
             <form class="form-registro" action="" method="post">
-                <h2 class="form-titulo">Creacion de cuenta de usuario</h2>
+                <h2 class="form-titulo">Cargar Trabajo</h2>
                 <div class="contenedor-input">
-                    <input class="colXl" type="text" name="txtNombre" id="txtNombre" placeholder="Ingrese nombre" required minlength="3">
-                    <input class="colXl" type="text" name="txtApellido" id="txtApellido" placeholder="Ingrese apellido" required minlength="3">
-                    <input class="colXl" type="email" name="txtCorreo" id="txtCorreo" placeholder="Ingrese email" required>
-                    <input class="colXl" type="password" name="txtPassword" id="txtPassword" placeholder="Ingrese contraseña" required minlength="8" maxlength="12">
-
-                    <input class="btn-registrar" type="submit" value="registrar" onclick="validarCuenta()">
+                    <input class="colXl" type="text" name="txtDiagnostico" id="txtDiagnostico" placeholder="Ingrese diagnostico" required minlength="3">
+                    <input class="colXl" type="text" name="txtNombreMecanico" id="txtNombreMecanico" placeholder="Ingrese nombre mecanico" required minlength="3">
+                    <input class="colXl" type="text" name="txtMateriales" id="txtMateriales" placeholder="Ingrese listado mecanico" required minlength="3">
+                    <input class="colXl" type="date" name="txtFechaNaci" id="txtFechaNaci" required>
+                    <div class="mb-3">
+                        <label for="formFileMultiple" class="form-label">Elija una o más imagenes del trabajo</label>
+                        <input class="colXl" class="form-control" type="file" id="formFileMultiple" multiple>
+                      </div>
+                    <input class="btn-registrar" type="submit" value="registrar" onclick="validarFecha()">
                 </div>
             </form>
         </section>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-        crossorigin="anonymous"></script>
         <script src="js/script.js"></script>
 
 

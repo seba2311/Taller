@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,12 +9,14 @@
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/fontello.css">
     <link rel="stylesheet" href="css/formulario.css">
+    <script src="js/sweetalert2.all.min.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 </head>
 
-<body class="bodyForm" background="img/Rayo_McQueen_-_Cars_2.png" >
-    
+<body class="bodyForm" background="img/Rayo_McQueen_-_Cars_2.png">
+
     <!--Cabecera de la pagina web-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -57,27 +58,53 @@
 
     <!--sector principal de la pagina-->
     <main>
-        <!--secciones de contenido-->
+        <!--Formulario-->
 
 
         <section id="formulario">
             <form class="form-registro" action="" method="post">
                 <h2 class="form-titulo">Contactanos</h2>
                 <div class="contenedor-input">
-                    <input class="col-sm" type="text" name="txtNombre" id="txtNombre" placeholder="Ingrese nombre" required minlength="3">
-                    <input class="col-sm" type="text" name="txtApellido" id="txtApellido" placeholder="Ingrese apellido" required minlength="3">
-                    <input class="col-xl" type="email" name="txtCorreo" id="txtCorreo" placeholder="Ingrese email" required>
-                    <input class="col-xl" type="text" name="txtTelefono" id="txtTelefono" placeholder="Ingrese telefono" required>
-                    <div class="mb-3">
-                        <textarea class="col-xl" id="txtProblema" rows="3" required minlength="10" placeholder="Describa su problema"></textarea>
-                      </div>
-                    <input class="btn-registrar" type="submit" value="registrar" onclick="validarContacto()">
+                    <input class="colXl" type="text" name="txtNombre" id="txtNombre" placeholder="Ingrese nombre"
+                        required minlength="3" pattern="[A-Za-z ]{3,45}" title="solo letras entre 3 a 45 caracteres">
+                    <input class="colXl" type="text" name="txtApellido" id="txtApellido" placeholder="Ingrese apellido"
+                        required minlength="3">
+                    <input class="colXl" type="email" name="txtCorreo" id="txtCorreo" placeholder="Ingrese email"
+                        required>
+                    <input class="colXl" type="text" name="txtTelefono" id="txtTelefono" placeholder="Ingrese telefono"
+                        required>
+
+                    <textarea class="colXl" id="txtProblema" rows="3" required minlength="10"
+                        placeholder="Describa su asunto"></textarea>
+
+                    <input class="btn-registrar" type="submit" value="Enviar" onclick="validarContacto()">
+                    <div id="valor_dolar"></div>
                 </div>
             </form>
         </section>
         <script src="js/script.js"></script>
+        <script>
+            $(document).ready(function recupera() {
+                fetch("https://mindicador.cl/api/dolar")
+                    .then(
+                        function (response) {
+                            if (response.status != 200) {
+                                alert("probleas de conexion con el servidor");
+                                return;
+                            }
+                            response.json().then(
+                                function (data) {
+                                    console.log(data);
+                                    var dolar = data.serie[0].valor;
+                                    //alert('valor del dolar: '+dolar);
+                                    document.getElementById('valor_dolar').innerHTML = "Para la compra de repuesto al extranjero tomar en cuenta el valor del dolar=" + dolar;
+                                }
+                            );
+                        }
+                    );
+            })
 
-
+        </script>
 
     </main>
 </body>

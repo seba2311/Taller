@@ -5,6 +5,7 @@ function validarContacto(){
                 if(validarTelefono()==true){
                     if(validarProblema()==true){
                         alert('solicitud enviada')
+                       // Swal.fire('Solicitud enviada')
                     }
                     
                 }
@@ -18,8 +19,23 @@ function validarContacto(){
 }
 function validarNombre(){
 var nombre= document.getElementById('txtNombre').value;
-if(nombre.trim().length==0){
-    alert('nombre vacio')
+var largo = nombre.trim().length;
+if(largo==0){
+    //alert('nombre vacio')
+    Swal.fire({
+        icon: 'error',
+        title: 'nombre',
+        text: 'el nombre esta vacio'
+      });
+    return false
+}
+if(largo<3){
+    //alert('el nombre tiene un largo menor a 3 caracteres')
+    Swal.fire({
+        icon: 'error',
+        title: 'nombre',
+        text: 'el nombre tiene un largo menor a 3 caracteres'
+      });
     return false
 }
 return true
@@ -28,8 +44,23 @@ return true
 
 function validarApellido(){
 var apellido= document.getElementById('txtApellido').value;
-if(apellido.trim().length==0){
-    alert('apellido vacio')
+var largo = apellido.trim().length;
+if(largo==0){
+    //alert('apellido vacio')
+    Swal.fire({
+        icon: 'error',
+        title: 'Apellido',
+        text: 'El apellido esta vacio'
+      });
+    return false
+}
+if(largo<3){
+    //alert('el nombre tiene un largo menor a 3 caracteres')
+    Swal.fire({
+        icon: 'error',
+        title: 'Apellido',
+        text: 'El Apellido tiene un largo menor a 3 caracteres'
+      });
     return false
 }
 return true
@@ -39,7 +70,12 @@ return true
 function validarCorreo(){
 var correo= document.getElementById('txtCorreo').value;
 if(correo.trim().length==0){
-    alert('correo vacio')
+    //alert('correo vacio')
+    Swal.fire({
+        icon: 'error',
+        title: 'Correo',
+        text: 'El correo esta vacio'
+      });
     return false
 }
 return true
@@ -49,7 +85,12 @@ return true
 function validarTelefono(){
 var telefono= document.getElementById('txtTelefono').value;
 if(telefono.trim().length==0){
-    alert('telefono vacio')
+    //alert('telefono vacio')
+    Swal.fire({
+        icon: 'error',
+        title: 'Telefono',
+        text: 'El telefono esta vacio'
+      });
     return false
 }
 return true
@@ -58,8 +99,25 @@ return true
 
 function validarProblema(){
 var problema= document.getElementById('txtProblema').value;
-if(problema.trim().length==0){
-    alert('problema vacio')
+var largo= problema.trim().length;
+if(largo==0){
+    //alert('problema vacio')
+    //Swal.fire('Problema vacio')
+    Swal.fire({
+        icon: 'error',
+        title: 'Problema',
+        text: 'El problema esta vacio',
+        footer: '<a href>Why do I have this issue?</a>'
+      })
+    return false
+}
+if(largo < 10){
+    Swal.fire({
+        icon: 'error',
+        title: 'Problema',
+        text: 'El problema debe tener al menos 10 caracteres',
+        footer: '<a href>Why do I have this issue?</a>'
+      })
     return false
 }
 return true
@@ -69,7 +127,8 @@ return true
 function validarPassword(){
     var password=document.getElementById('txtPassword').value;
     if(password.trim().length==0){
-        alert('contraseña vacia')
+        //alert('contraseña vacia')
+        Swal.fire('Contraseña vacia')
         return false
     }
     return true
@@ -80,7 +139,9 @@ function validarCuenta(){
         if(validarApellido()==true){
             if(validarCorreo()==true){
                 if(validarPassword()==true){
-                    alert('Cuenta creada con exito')
+                    //alert('Cuenta creada con exito')
+                    Swal.fire('Cuenta creada con exito')
+                    
                 }
             }
         }
@@ -89,4 +150,44 @@ function validarCuenta(){
 
 function iniciaresion(){
     alert('sesion iniciada')
+    
+}
+
+function validarFecha() {
+    var fechaUsuario = document.getElementById('txtFechaNaci').value;
+    var fechaSistema = new Date();
+    console.log('Fecha Usuario:' + fechaUsuario);
+    console.log('Fecha Sistema:' + fechaSistema);
+    ////////////////////////////////////////// 2021-04-01
+    var ano = fechaUsuario.slice(0, 4);
+    var mes = fechaUsuario.slice(5, 7);
+    var dia = fechaUsuario.slice(8, 10);
+    console.log('A:' + ano + ' M:' + mes + ' D:' + dia);
+    var fechaNuevaUsuario = new Date(ano, (mes - 1), dia);
+    console.log('Nueva Fecha:' + fechaNuevaUsuario);
+    //////////////////////////////////////////////////
+    if (fechaNuevaUsuario > fechaSistema) {
+        //alert('fecha de nacimiento mayor a la fecha actual');
+        Swal.fire({
+            icon: 'error',
+            title: 'fecha de nacimiento',
+            text: 'fecha de nacimiento mayor a la fecha actual'
+          });
+        return false;
+    }
+    ///////////////////////////////////////////////////
+    var elDia = 24 * 60 * 60 * 1000;// cuantos milisegundos son 1 dia
+    var dias = Math.trunc((fechaSistema.getTime() - fechaNuevaUsuario.getTime()) / elDia);
+    console.log('Dias:' + dias);
+    var anos = Math.trunc(dias / 365);
+    if (anos < 18) {
+        //alert('usted es menor de edad, solo tiene ' + anos + ' anos de edad');
+        Swal.fire({
+            icon: 'error',
+            title: 'fecha de nacimiento',
+            text: 'usted es menor de edad, solo tiene ' + anos + ' anos de edad'
+          });
+        return false;
+    }
+    return true;
 }

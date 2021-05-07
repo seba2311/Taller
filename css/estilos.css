@@ -33,6 +33,7 @@ h1{
     font-family: cursive;
     margin-top: 45px;
     padding: 15px;
+    color: white;
 }
 
 #bienvenida h2{
@@ -51,6 +52,13 @@ h1{
     color: white;
     padding: 10px;
     margin-left: 800px;
+}
+
+#valor_dolar{
+    color: black;
+}
+#imagenes{
+    margin: 10px;
 }
 
 /**************************************/
