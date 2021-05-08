@@ -51,7 +51,7 @@ h1{
 .servicios{
     color: white;
     padding: 10px;
-    margin-left: 800px;
+    margin-left: 40%;
 }
 
 #valor_dolar{
@@ -59,6 +59,12 @@ h1{
 }
 #imagenes{
     margin: 10px;
+}
+
+.img-fluid{
+    margin-left: 30%;
+    padding: 10px;
+    
 }
 
 /**************************************/

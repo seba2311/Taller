@@ -139,8 +139,8 @@ function validarCuenta(){
         if(validarApellido()==true){
             if(validarCorreo()==true){
                 if(validarPassword()==true){
-                    //alert('Cuenta creada con exito')
-                    Swal.fire('Cuenta creada con exito')
+                    alert('Cuenta creada con exito')
+                    //Swal.fire('Cuenta creada con exito')
                     
                 }
             }
@@ -170,24 +170,91 @@ function validarFecha() {
         //alert('fecha de nacimiento mayor a la fecha actual');
         Swal.fire({
             icon: 'error',
-            title: 'fecha de nacimiento',
-            text: 'fecha de nacimiento mayor a la fecha actual'
+            title: 'fecha de ingreso',
+            text: 'fecha de Ingreso mayor a la fecha actual'
           });
         return false;
     }
     ///////////////////////////////////////////////////
-    var elDia = 24 * 60 * 60 * 1000;// cuantos milisegundos son 1 dia
-    var dias = Math.trunc((fechaSistema.getTime() - fechaNuevaUsuario.getTime()) / elDia);
-    console.log('Dias:' + dias);
-    var anos = Math.trunc(dias / 365);
-    if (anos < 18) {
-        //alert('usted es menor de edad, solo tiene ' + anos + ' anos de edad');
+
+    return true;
+}
+//validar trabajos
+function validarDiagnistico(){
+var diagnostico= document.getElementById('txtDiagnostico').value;
+var largo = diagnostico.trim().length;
+if(largo==0){
+    //alert('nombre vacio')
+    Swal.fire({
+        icon: 'error',
+        title: 'nombre',
+        text: 'el nombre esta vacio'
+      });
+    return false
+}
+if(largo<3){
+    //alert('el nombre tiene un largo menor a 3 caracteres')
+    Swal.fire({
+        icon: 'error',
+        title: 'nombre',
+        text: 'el nombre tiene un largo menor a 3 caracteres'
+      });
+    return false
+}
+return true
+
+}
+
+function validarMecanico(){
+    var material= document.getElementById('txtMateriales').value;
+    var largo = material.trim().length;
+    if(largo==0){
+    //alert('nombre vacio')
+     Swal.fire({
+            icon: 'error',
+            title: 'Materiales',
+            text: 'el listado de materiales esta vacio'
+      });
+        return false
+    }
+    if(largo<3){
+    //alert('el nombre tiene un largo menor a 3 caracteres')
         Swal.fire({
             icon: 'error',
-            title: 'fecha de nacimiento',
-            text: 'usted es menor de edad, solo tiene ' + anos + ' anos de edad'
-          });
-        return false;
+            title: 'Mecanico',
+            text: 'el nombre del mecanico  tiene un largo menor a 3 caracteres'
+        });
+        return false
     }
-    return true;
+    return true
+}
+
+function validarMateriales(){
+    var mecanico= document.getElementById('txtNombreMecanico').value;
+    var largo = mecanico.trim().length;
+    if(largo==0){
+    //alert('nombre vacio')
+     Swal.fire({
+            icon: 'error',
+            title: 'Materiales',
+            text: 'el listado de materiales esta vacio'
+      });
+        return false
+    }
+    if(largo<3){
+    //alert('el nombre tiene un largo menor a 3 caracteres')
+        Swal.fire({
+            icon: 'error',
+            title: 'Mecanico',
+            text: 'el nombre del mecanico  tiene un largo menor a 3 caracteres'
+        });
+        return false
+    }
+    return true
+}
+
+function validarTrabajo(){
+    if (validarDiagnistico==true) {
+       alert('hola')
+    }
 }
